@@ -17,11 +17,9 @@
  It gives you the ability to change the size, angle and rotation of a box
  on your screen, so that you can observe it from every possible angle.
  
- Before you run the two applications, you should modify
- the IP addresses to match your phone's and your computer's.
- 
- You can find your phone's private IP address in
- settings > about phone > status > IP address
+ Before you run the two applications, you should enter
+ your computer's IP to the Android app running
+ on your phone.
  
  Your computer's private IP address will show up in the console
  once you run the "ObservedItem" application. It will say something like:
@@ -31,11 +29,7 @@
  Another way to find your private IP address in Windows is 
  by running the ipconfig command in a Command Prompt window. 
  You’ll see your IP address in the IPv4 Address row beneath the name of your connection.
- 
- In future versions, the computer's IP will be acquired automatically so that you do not
- have to compile from start the android app, which might be a bit of a fuss
- if you do not have the android sdk already installed on your system.
- 
+  
  */
 
 

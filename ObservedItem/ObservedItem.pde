@@ -17,9 +17,6 @@
     your computer's IP to the Android app running
     on your phone.
     
-    You can find your phone's private IP address in
-    settings > about phone > status > IP address
-    
     Your computer's private IP address will show up in the console
     once you run this sketch. It will say something like:
     you (xxx.xxx.xxx.xxx)
