@@ -17,20 +17,28 @@
     your computer's IP to the Android app running
     on your phone.
     
-    Your computer's private IP address will show up in the console
-    once you run this sketch. It will say something like:
-    you (xxx.xxx.xxx.xxx)
-    This is you.
+    Your computer's IP will show up in the start screen of the app.
+    You can enter this IP on the app running on your phone
+    and start playing!
 
  */
 
 import oscP5.*;
 import netP5.*;
+import java.net.InetAddress;
 
 //these variables will receive the android sensor readings
 float light, proximity, rotX, rotY, rotZ, gyrX, gyrY, gyrZ, accX, accY, accZ;
 float Size = 10;
 float Angle = 0;
+
+//we will use these variables to get the IP of the machine
+InetAddress inet;
+String myIP;
+
+/* this will check if the user is done entering 
+   the IP of the machine on their phone */
+boolean check=false;
 
 OscP5 oscP5;
 
@@ -54,6 +62,26 @@ void setup() {
 void draw() {
     background(0);
     
+    /* Until the user gets the IP and enters it on their phone
+       we keep showing it to them. When they are done, we render the cube.
+    */
+    if (check==false)
+    {
+        try {
+          inet = InetAddress.getLocalHost();
+          myIP = inet.getHostAddress();
+            }
+        catch (Exception e) {
+          e.printStackTrace();
+          myIP = "couldnt get IP"; 
+            }
+        textSize(25);
+        text("Please enter this IP address on your phone: \n"+myIP, width/2, height/2);
+        textSize(15);
+        text("Once you're done, press any key or click anywhere on the window", width/2, height/2+80);
+    }
+    else
+    {
     /*
     here I am using the values from the light sensor, the finger rotation gesture and the rotation sensor
     the values are updated each time an osc message is received.
@@ -70,6 +98,7 @@ void draw() {
       rotateY(Angle);
       box(Size);
     popMatrix();
+    }
 }
 
 
@@ -103,4 +132,14 @@ void oscEvent(OscMessage theOscMessage) {
   proximity=theOscMessage.get(10).floatValue();
   Size=theOscMessage.get(11).floatValue();
   Angle=theOscMessage.get(12).floatValue();
+}
+
+void keyPressed()
+{
+  check=true;
+}
+
+void mousePressed()
+{
+  check=true;
 }
