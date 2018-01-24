@@ -109,7 +109,7 @@ void oscEvent(OscMessage theOscMessage) {
 
   /* get and print the address pattern and the typetag of the received OscMessage */
   //these are just for checking reasons
-
+  //println("message received");
   println("### received an osc message with addrpattern "+theOscMessage.addrPattern()+" and typetag "+theOscMessage.typetag());
   theOscMessage.print();
   

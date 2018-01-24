@@ -132,6 +132,8 @@ void draw() {
 
     //here we send our message to our computer (we defined the address in the setup)
     oscP5.send(myOtherMessage, myRemoteLocation);
+    
+    println(myOtherMessage.get(0).floatValue(), myRemoteLocation);
   }
 }
 
